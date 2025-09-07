@@ -1,49 +1,50 @@
-import React, { useState } from 'react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
-import { Card, CardContent } from './ui/card';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
-import { useToast } from '../hooks/use-toast';
+import React, { useState } from "react";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Card, CardContent } from "./ui/card";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { useToast } from "../hooks/use-toast";
+import { info } from "../data/mock";
 
 export const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    projectType: '',
-    budget: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    budget: "",
+    message: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Mock form submission
-    console.log('Form submission:', formData);
-    
+    console.log("Form submission:", formData);
+
     toast({
       title: "Quote Request Sent!",
       description: "We'll get back to you within 24 hours.",
-      className: "bg-gray-900 border-[#00FFD1] text-white"
+      className: "bg-gray-900 border-[#00FFD1] text-white",
     });
-    
+
     // Reset form
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      projectType: '',
-      budget: '',
-      message: ''
+      name: "",
+      email: "",
+      phone: "",
+      projectType: "",
+      budget: "",
+      message: "",
     });
   };
 
@@ -51,21 +52,21 @@ export const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: "+1 (555) 123-4567",
-      action: "tel:+15551234567"
+      details: info.phone,
+      action: `tel:${info.phone}`,
     },
     {
       icon: Mail,
       title: "Email",
-      details: "info@premiumbuild.com",
-      action: "mailto:info@premiumbuild.com"
+      details: info.email,
+      action: `mailto:${info.email}`,
     },
-    {
-      icon: MapPin,
-      title: "Address",
-      details: "123 Construction Ave, Building City, BC 12345",
-      action: null
-    },
+    // {
+    //   icon: MapPin,
+    //   title: "Address",
+    //   details: "123 Construction Ave, Building City, BC 12345",
+    //   action: null
+    // },
     {
       icon: Clock,
       title: "Hours",
@@ -75,15 +76,15 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="dark-container py-24">
+    <section id="contact" className="dark-container py-20">
       <div className="dark-content-container">
         <div className="text-center mb-16">
           <h2 className="display-large text-white mb-4">
             GET YOUR <span className="text-[#63a547]">FREE QUOTE</span>
           </h2>
           <p className="body-large text-gray-300 max-w-3xl mx-auto">
-            Ready to start your premium construction project? Contact us today for a free consultation 
-            and detailed quote tailored to your specific needs.
+            Ready to start your premium construction project? Contact us today for a free consultation and detailed
+            quote tailored to your specific needs.
           </p>
         </div>
 
@@ -125,7 +126,7 @@ export const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="bg-gray-900 border-gray-700 text-white focus:border-[#00FFD1]"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+1 (555) 555-5555"
                   />
                 </div>
                 <div>
@@ -137,10 +138,11 @@ export const Contact = () => {
                     className="w-full bg-gray-900 border border-gray-700 text-white focus:border-[#00FFD1] px-3 py-2 rounded"
                   >
                     <option value="">Select Type</option>
-                    <option value="residential">Residential</option>
-                    <option value="commercial">Commercial</option>
-                    <option value="industrial">Industrial</option>
-                    <option value="renovation">Renovation</option>
+                    {info.services.map((service, index) => (
+                      <option key={index} value={service}>
+                        {service}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -184,8 +186,8 @@ export const Contact = () => {
             <div>
               <h3 className="heading-2 text-white mb-6">Get In Touch</h3>
               <p className="body-medium text-gray-300 mb-8">
-                Our experienced team is ready to discuss your construction project. 
-                Reach out through any of the channels below.
+                Our experienced team is ready to discuss your construction project. Reach out through any of the
+                channels below.
               </p>
             </div>
 
@@ -216,20 +218,16 @@ export const Contact = () => {
               ))}
             </div>
 
-            <Card className="bg-gradient-to-r from-gray-900 to-gray-800 border-[#00FFD1]/30">
+            {/* <Card className="bg-gradient-to-r from-gray-900 to-gray-800 border-[#00FFD1]/30">
               <CardContent className="p-8 text-center">
-                <h4 className="heading-2 text-white mb-4">
-                  Free Consultation Available
-                </h4>
+                <h4 className="heading-2 text-white mb-4">Free Consultation Available</h4>
                 <p className="body-medium text-gray-300 mb-6">
-                  Schedule a free on-site consultation to discuss your project requirements 
-                  and get expert advice from our construction professionals.
+                  Schedule a free on-site consultation to discuss your project requirements and get expert advice from
+                  our construction professionals.
                 </p>
-                <Button className="btn-primary">
-                  Schedule Consultation
-                </Button>
+                <Button className="btn-primary">Schedule Consultation</Button>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </div>

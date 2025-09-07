@@ -26,7 +26,7 @@ export const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="dark-container py-24">
+    <section id="portfolio" className="dark-container py-15">
       <div className="dark-content-container">
         <div className="text-center mb-16">
           <h2 className="display-large text-white mb-4">
@@ -60,7 +60,7 @@ export const Portfolio = () => {
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                {/* <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <Button 
                     className="btn-primary"
                     onClick={() => openModal(project)}
@@ -68,10 +68,10 @@ export const Portfolio = () => {
                     <Play size={16} className="mr-2" />
                     View Details
                   </Button>
-                </div>
-                <Badge className="absolute top-4 right-4 bg-[#63a547] text-black">
+                </div> */}
+                {/* <Badge className="absolute top-4 right-4 bg-[#63a547] text-black">
                   {project.category}
-                </Badge>
+                </Badge> */}
               </div>
               <CardContent className="p-6">
                 <h3 className="heading-2 text-white mb-2">{project.title}</h3>

@@ -8,8 +8,8 @@ export const Header = () => {
   const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Services', href: '#services' },
-    { label: 'About', href: '#about' },
+    // { label: 'Services', href: '#services' },
+    // { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' }
   ];
 
@@ -61,7 +61,7 @@ export const Header = () => {
                 {item.label}
               </a>
             ))}
-            <Button 
+            {/* <Button 
               className="btn-primary mt-4"
               onClick={() => {
                 setIsOpen(false);
@@ -69,7 +69,7 @@ export const Header = () => {
               }}
             >
               Get Quote
-            </Button>
+            </Button> */}
           </nav>
         </div>
       )}
